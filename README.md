@@ -1,2 +1,2 @@
 # gamestore-server
-This project is server side (dashboard) for gamestore
+This project is server side (dashboard) for https://github.com/guswawan/gamestore
