@@ -3,11 +3,16 @@ const Category = require('./model');
 module.exports = {
   index: async (req, res) => {
     try {
+      const alertMessage = req.flash('alertMessage');
+      const alertStatus = req.flash('alertStatus');
+      const alert = { message: alertMessage, status: alertStatus };
       const categories = await Category.find();
 
-      res.render('admin/category/view_category', { categories });
+      res.render('admin/category/view_category', { categories, alert });
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 
@@ -15,7 +20,9 @@ module.exports = {
     try {
       res.render('admin/category/create');
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 
@@ -26,9 +33,13 @@ module.exports = {
       let category = await Category({ name });
       await category.save();
 
+      req.flash('alertMessage', 'Data added successfully');
+      req.flash('alertStatus', 'success');
       res.redirect('/category');
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `Data failed to add: ${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 
@@ -39,7 +50,9 @@ module.exports = {
       const category = await Category.findOne({ _id: id });
       res.render('admin/category/edit', { category });
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 
@@ -50,9 +63,13 @@ module.exports = {
 
       await Category.findOneAndUpdate({ _id: id }, { name });
 
+      req.flash('alertMessage', 'Data updated successfully');
+      req.flash('alertStatus', 'success');
       res.redirect('/category');
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `Data failed to update: ${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 
@@ -62,9 +79,13 @@ module.exports = {
 
       await Category.findOneAndRemove({ _id: id });
 
+      req.flash('alertMessage', 'Data deleted successfully');
+      req.flash('alertStatus', 'success');
       res.redirect('/category');
     } catch (err) {
-      console.log(err);
+      req.flash('alertMessage', `Data failed to delete: ${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/category');
     }
   },
 };
