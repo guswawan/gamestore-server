@@ -1,0 +1,105 @@
+<%- include ../../partials/header.ejs %>
+<!-- Navbar -->
+<%- include ../../partials/navbar.ejs %>
+<!-- Sidebar -->
+<%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Nominal</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/nominal">Nominal</a></li>
+            <li class="breadcrumb-item active">Update</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Nominal Change Form</h3>
+            </div>
+
+            <!-- form start -->
+            <form
+              action="/nominal/edit/<%= nominal._id %>?_method=PUT"
+              method="POST"
+            >
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Coin</label>
+                  <select
+                    class="form-control select2"
+                    style="width: 100%"
+                    name="coinName"
+                    required
+                  >
+                    <option selected="selected"> Select Coin </option>
+                    <option value="Gold" 
+                    <% if(nominal.coinName === 'Gold') { %>
+                      selected
+                    <% } %>
+                      >Gold</option>
+                    <option value="Diamond"
+                    <% if(nominal.coinName === 'Diamond') { %>
+                      selected
+                    <% } %>
+                    >Diamond</option>
+                    <option value="Jewel"
+                    <% if(nominal.coinName === 'Jewel') { %>
+                      selected
+                    <% } %>
+                    >Jewel</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="coinQuantity">Quantity</label>
+                  <input
+                    type="number"
+                    name="coinQuantity"
+                    class="form-control"
+                    id="coinQuantity"
+                    value="<%= nominal.coinQuantity%>"
+                    placeholder="Enter coin quantity"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input
+                    type="number"
+                    name="price"
+                    class="form-control"
+                    id="price"
+                    value="<%= nominal.price%>"
+                    placeholder="Enter the price"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Footer -->
+<%- include ../../partials/footer.ejs %>
+<!-- Js -->
+<%- include ../../partials/js.ejs %>
