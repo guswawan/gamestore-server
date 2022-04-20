@@ -10,6 +10,7 @@ const {
   viewEdit,
   actionEdit,
   actionDelete,
+  actionStatus,
 } = require('./controller');
 
 /* ROUTERS. */
@@ -27,5 +28,6 @@ router.put(
   actionEdit
 );
 router.delete('/delete/:id', actionDelete);
+router.put('/status/:id', actionStatus);
 
 module.exports = router;
