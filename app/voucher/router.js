@@ -21,7 +21,11 @@ router.post(
   actionCreate
 );
 router.get('/edit/:id', viewEdit);
-router.put('/edit/:id', actionEdit);
+router.put(
+  '/edit/:id',
+  multer({ dest: os.tmpdir() }).single('image'),
+  actionEdit
+);
 router.delete('/delete/:id', actionDelete);
 
 module.exports = router;
