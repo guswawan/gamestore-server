@@ -1,0 +1,81 @@
+<%- include ../../partials/header.ejs %>
+<!-- Navbar -->
+<%- include ../../partials/navbar.ejs %>
+<!-- Sidebar -->
+<%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Payment</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/payment">Payment</a></li>
+            <li class="breadcrumb-item active">Add</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add Payment Form</h3>
+            </div>
+
+            <!-- form start -->
+            <form action="/payment/create" method="POST">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="nameType">Payment Type</label>
+                  <input
+                    type="text"
+                    name="nameType"
+                    class="form-control"
+                    id="nameType"
+                    placeholder="Enter payment type"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Bank</label>
+                  <div class="select2-purple">
+                    <select
+                      class="form-control select2"
+                      style="width: 100%"
+                      name="banks"
+                      data-placeholder="Select bank account"
+                      multiple="multiple"
+                      required
+                    >
+                      <% banks.forEach(bank => { %>
+                      <option value="<%= bank._id %>">
+                        <%= bank.name %> - <%= bank.bankName %>-<%=
+                        bank.accountNumber %>
+                      </option>
+                      <% }) %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- Footer -->
+<%- include ../../partials/footer.ejs %>
+<!-- Js -->
+<%- include ../../partials/js.ejs %>
