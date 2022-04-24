@@ -1,0 +1,72 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Game Name</th>
+      <th>Item</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Player Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < transaction.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <img
+              width="48px"
+              height="48px"
+              src="http://localhost:3000/uploads/<%= transaction[i]?.historyVoucherTopup?.thumbnail %>"
+              alt="thumbnail"
+            />
+          </li>
+        </ul>
+        <%= transaction[i]?.historyVoucherTopup?.gameName %>
+        <br />
+        <%= transaction[i]?.historyVoucherTopup?.category %>
+      </td>
+      <td>
+        <%= transaction[i]?.historyVoucherTopup?.coinName %> <%=
+        transaction[i]?.historyVoucherTopup?.coinQuantity %>
+      </td>
+      <td>Rp<%= transaction[i]?.historyVoucherTopup?.price %></td>
+      <td>
+        <% if(transaction[i].status === 'success') { %>
+        <span class="badge badge-success"> Success </span>
+        <% } else if (transaction[i].status === 'failed') { %>
+        <span class="badge badge-danger"> Failed </span>
+        <% } else { %>
+        <span class="badge badge-warning"> Pending </span>
+        <% }%>
+      </td>
+      <td><%= transaction[i]?.player?.name ?? '-' %></td>
+      <td>
+        <form
+          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          method="POST"
+          style="display: inline-block"
+        >
+          <button class="btn btn-danger btn-sm">
+            <i class="fas fa-times-circle"></i>
+            Reject
+          </button>
+        </form>
+        <form
+          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          method="POST"
+          style="display: inline-block"
+        >
+          <button class="btn btn-info btn-sm">
+            <i class="fas fa-check"></i>
+            Accept
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

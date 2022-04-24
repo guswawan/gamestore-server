@@ -15,7 +15,7 @@
       <td><%= i + 1 %></td>
       <td><%= voucher[i].name %></td>
       <td><%= voucher[i]?.category?.name ?? '-' %></td>
-      <td>
+      <td width="400px">
         <% voucher[i]?.nominals?.forEach(nominal => { %>
         <span class="badge badge-warning">
           <%= nominal.coinName %> <%= nominal.price %>
