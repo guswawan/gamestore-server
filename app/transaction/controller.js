@@ -20,4 +20,28 @@ module.exports = {
       res.redirect('/transaction');
     }
   },
+
+  actionStatus: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { status } = req.query;
+
+      const modStatus = await Transaction.findByIdAndUpdate(
+        { _id: id },
+        { status }
+      );
+      console.log('STATUS', modStatus.status);
+
+      req.flash(
+        'alertMessage',
+        `Transaction ${modStatus.status === 'failed' ? 'success' : 'rejected'}`
+      );
+      req.flash('alertStatus', 'info');
+      res.redirect('/transaction');
+    } catch (err) {
+      req.flash('alertMessage', `${err.message}`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/transaction');
+    }
+  },
 };
