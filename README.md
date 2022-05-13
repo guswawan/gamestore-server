@@ -6,4 +6,4 @@ This project is server side (dashboard) for https://github.com/guswawan/gamestor
 * nodejs
 * expressjs
 * mongoDB v4.4
-* jwt
+* jsonwebtoken
