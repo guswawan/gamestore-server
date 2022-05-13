@@ -12,7 +12,7 @@
     <% for(let i = 0; i < payment.length; i++) { %>
     <tr>
       <td><%= i + 1 %></td>
-      <td><%= payment[i].nameType %></td>
+      <td><%= payment[i].paymentType %></td>
       <td>
         <% payment[i]?.banks?.forEach(bank => { %>
         <span class="badge badge-warning">

@@ -62,7 +62,7 @@ let transactionSchema = mongoose.Schema(
       ref: 'Player',
     },
 
-    userHistoty: {
+    historyUser: {
       name: { type: String, require: [true, 'Name player is required'] },
       phoneNumber: {
         type: Number,

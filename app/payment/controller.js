@@ -39,9 +39,9 @@ module.exports = {
 
   actionCreate: async (req, res) => {
     try {
-      const { nameType, banks } = req.body;
+      const { paymentType, banks } = req.body;
 
-      let payment = await Payment({ nameType, banks });
+      let payment = await Payment({ paymentType, banks });
       await payment.save();
 
       req.flash('alertMessage', 'Data added successfully');
@@ -77,9 +77,9 @@ module.exports = {
   actionEdit: async (req, res) => {
     try {
       const { id } = req.params;
-      const { nameType, banks } = req.body;
+      const { paymentType, banks } = req.body;
 
-      await Payment.findOneAndUpdate({ _id: id }, { nameType, banks });
+      await Payment.findOneAndUpdate({ _id: id }, { paymentType, banks });
 
       req.flash('alertMessage', 'Data updated successfully');
       req.flash('alertStatus', 'success');

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let paymentSchema = mongoose.Schema(
   {
-    nameType: {
+    paymentType: {
       type: String,
       require: [true, 'Name is required'],
     },
