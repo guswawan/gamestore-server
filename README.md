@@ -1,5 +1,5 @@
 # gamestore-server
-This project is server side (dashboard) for https://github.com/guswawan/gamestore
+This project is service server side (dashboard) for https://github.com/guswawan/gamestore
 
 ### Tools
 
