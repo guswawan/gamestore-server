@@ -6,4 +6,4 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 * nodejs
 * expressjs
 * mongoDB v4.4
-* jsonwebtoken
+* jsonwebtoken 
