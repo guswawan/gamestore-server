@@ -30,7 +30,6 @@ module.exports = {
         { _id: id },
         { status }
       );
-      console.log('STATUS', modStatus.status);
 
       req.flash(
         'alertMessage',
