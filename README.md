@@ -7,3 +7,6 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 * expressjs
 * mongoDB v4.4
 * jsonwebtoken 
+
+### Run
+npm run dev
