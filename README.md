@@ -9,4 +9,4 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 * jsonwebtoken 
 
 ### Run
-npm run dev
+`npm run dev`
