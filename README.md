@@ -8,5 +8,5 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 * mongoDB v4.4
 * jsonwebtoken 
 
-### Run
+### Run dev
 `npm run dev`
