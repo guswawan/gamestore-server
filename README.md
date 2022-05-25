@@ -10,3 +10,6 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 
 ### Run dev
 `npm run dev`
+
+### Run production
+npm run prod
