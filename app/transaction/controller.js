@@ -33,7 +33,7 @@ module.exports = {
 
       req.flash(
         'alertMessage',
-        `Transaction ${modStatus.status === 'failed' ? 'success' : 'rejected'}`
+        `Transaction ${status === 'failed' ? 'rejected' : 'successfully'}`
       );
       req.flash('alertStatus', 'info');
       res.redirect('/transaction');
