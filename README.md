@@ -12,4 +12,4 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 `npm run dev`
 
 ### Run production
-npm run prod
+`npm run prod`
