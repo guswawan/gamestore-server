@@ -38,7 +38,7 @@ module.exports = {
 
             delete player._doc.password;
 
-            res.status(201).json({ data: payload });
+            res.status(201).json({ data: player });
           } catch (err) {
             if (err & (err.name === 'ValidationError')) {
               return res.status(422).json({
@@ -57,7 +57,7 @@ module.exports = {
 
         delete player._doc.password;
 
-        res.status(201).json({ data: payload });
+        res.status(201).json({ data: player });
       }
     } catch (err) {
       if (err & (err.name === 'ValidationError')) {
