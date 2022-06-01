@@ -40,7 +40,7 @@ module.exports = {
 
             res.status(201).json({ data: player });
           } catch (err) {
-            if (err & (err.name === 'ValidationError')) {
+            if (err && err.name === 'ValidationError') {
               return res.status(422).json({
                 error: 1,
                 message: err.message,
@@ -60,7 +60,7 @@ module.exports = {
         res.status(201).json({ data: player });
       }
     } catch (err) {
-      if (err & (err.name === 'ValidationError')) {
+      if (err && err.name === 'ValidationError') {
         return res.status(422).json({
           error: 1,
           message: err.message,
