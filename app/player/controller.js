@@ -164,8 +164,10 @@ module.exports = {
       ]);
 
       res.status(200).json({
-        data: history,
-        total: total.length ? total[0].value : 0,
+        data: {
+          history: history,
+          total: total.length ? total[0].value : 0,
+        },
       });
     } catch (err) {
       res
