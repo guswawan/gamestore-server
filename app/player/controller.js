@@ -107,7 +107,7 @@ module.exports = {
           bankName: res_bank._doc.bankName,
           accountNumber: res_bank._doc.accountNumber,
         },
-        playerName: playerName,
+        name: name,
         userAccount: userAccount,
         tax: tax,
         value: value,

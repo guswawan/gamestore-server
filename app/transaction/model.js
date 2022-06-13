@@ -27,7 +27,7 @@ let transactionSchema = mongoose.Schema(
       },
     },
 
-    playerName: {
+    name: {
       type: String,
       require: [true, 'Name is required'],
       maxLength: [225, 'Name must between 3 - 225 character'],
