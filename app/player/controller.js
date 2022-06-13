@@ -108,7 +108,7 @@ module.exports = {
           accountNumber: res_bank._doc.accountNumber,
         },
         name: name,
-        userAccount: userAccount,
+        accountUser: accountUser,
         tax: tax,
         value: value,
         player: req.player._id,

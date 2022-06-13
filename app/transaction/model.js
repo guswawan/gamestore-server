@@ -34,7 +34,7 @@ let transactionSchema = mongoose.Schema(
       minLength: [3, 'Name must between 3 - 225 character'],
     },
 
-    userAccount: {
+    accountUser: {
       type: String,
       require: [true, 'Account name is required'],
       maxLength: [225, 'Name must between 3 - 225 character'],
