@@ -257,6 +257,7 @@ module.exports = {
     try {
       const { name = '', phoneNumber = '' } = req.body;
       const payload = {};
+
       if (name.length) payload.name = name;
       if (phoneNumber.length) payload.phoneNumber = phoneNumber;
       if (req.file) {
@@ -301,6 +302,10 @@ module.exports = {
               avatar: player.avatar,
             },
           });
+        });
+
+        src.on('err', async () => {
+          next(err);
         });
       } else {
         const player = await Player.findOneAndUpdate(
