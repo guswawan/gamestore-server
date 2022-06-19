@@ -10,55 +10,60 @@ module.exports = {
     try {
       const payload = req.body;
 
-      if (req.file) {
-        let tmp_path = req.file.path;
-        let originExt =
-          req.file.originalname.split('.')[
-            req.file.originalname.split('.').length - 1
-          ];
-        let filename = req.file.filename + '.' + originExt;
-        let target_path = path.resolve(
-          config.rootPath,
-          `public/uploads/${filename}`
-        );
+      // if (req.file) {
+      // let tmp_path = req.file.path;
+      // let originExt =
+      //   req.file.originalname.split('.')[
+      //     req.file.originalname.split('.').length - 1
+      //   ];
+      // let filename = req.file.filename + '.' + originExt;
+      // let target_path = path.resolve(
+      //   config.rootPath,
+      //   `public/uploads/${filename}`
+      // );
 
-        const src = fs.createReadStream(tmp_path);
-        const dest = fs.createWriteStream(target_path);
+      // const src = fs.createReadStream(tmp_path);
+      // const dest = fs.createWriteStream(target_path);
 
-        src.pipe(dest);
+      // src.pipe(dest);
 
-        src.on('end', async () => {
-          try {
-            const player = new Player({
-              ...payload,
-              avatar: filename,
-            });
+      // src.on('end', async () => {
+      //   try {
+      //     const player = new Player({
+      //       ...payload,
+      //       avatar: filename,
+      //     });
 
-            await player.save();
+      //     await player.save();
 
-            delete player._doc.password;
+      //     delete player._doc.password;
 
-            res.status(201).json({ data: player });
-          } catch (err) {
-            if (err && err.name === 'ValidationError') {
-              return res.status(422).json({
-                error: 1,
-                message: err.message,
-                fields: err.errors,
-              });
-            }
-            next(err);
-          }
-        });
-      } else {
-        let player = new Player(payload);
+      //     res.status(201).json({ data: player });
+      //   } catch (err) {
+      //     if (err && err.name === 'ValidationError') {
+      //       return res.status(422).json({
+      //         error: 1,
+      //         message: err.message,
+      //         fields: err.errors,
+      //       });
+      //     }
+      //     next(err);
+      //   }
+      // });
+      // } else {
+      // let player = new Player(payload);
+      let player = new Player({
+        ...payload,
+        avatar: req.files[0].path,
+        // imageId: req.files.public_id,
+      });
 
-        await player.save();
+      await player.save();
 
-        delete player._doc.password;
+      delete player._doc.password;
 
-        res.status(201).json({ data: player });
-      }
+      res.status(201).json({ data: player });
+      // }
     } catch (err) {
       if (err && err.name === 'ValidationError') {
         return res.status(422).json({
