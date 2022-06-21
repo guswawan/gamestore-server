@@ -161,7 +161,6 @@ module.exports = {
             value: { $sum: `$value` },
           },
         },
-        console.log('VAL', value),
       ]);
 
       res.status(200).json({
