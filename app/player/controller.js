@@ -89,7 +89,7 @@ module.exports = {
         return res.status(404).json({ message: 'Bank data not found.' });
 
       let tax = (10 / 100) * res_nominal._doc.price;
-      let value = res_nominal._doc.price - tax;
+      let value = res_nominal._doc.price + tax;
       const payload = {
         historyVoucherTopup: {
           gameName: res_voucher._doc.name,
@@ -161,6 +161,7 @@ module.exports = {
             value: { $sum: `$value` },
           },
         },
+        console.log('VAL', value),
       ]);
 
       res.status(200).json({
