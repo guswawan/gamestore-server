@@ -18,4 +18,3 @@ This project is service server side (dashboard) for https://github.com/guswawan/
 ### Run production
 `npm run prod`
 
-[LIVE]
