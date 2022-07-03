@@ -25,7 +25,7 @@ router.get('/transaction-history/:id/detail', isLoginPlayer, historyDetail);
 router.get('/dashboard', isLoginPlayer, dashboard);
 router.get('/me', isLoginPlayer, profile);
 router.put(
-  '/profile',
+  '/profile/:id',
   isLoginPlayer,
   multer({ dest: os.tmpdir() }).single('image'),
   editProfile
