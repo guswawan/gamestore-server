@@ -1,5 +1,5 @@
 # Dashboard Gamestore
-This project is service server side (dashboard) for https://github.com/guswawan/gamestore
+This project is CMS (dashboard) for https://github.com/guswawan/gamestore
 
 ### Tools
 
